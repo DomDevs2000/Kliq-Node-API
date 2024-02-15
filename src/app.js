@@ -14,4 +14,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // format json response
 app.set("json space", 2);
 
+// default route
+app.use("/", (req, res) => {
+  try {
+    res.status(200);
+    res.send("Welcome to JoinKliq Users API");
+  } catch (error) {
+    console.log(error);
+  }
+});
 export { app };
