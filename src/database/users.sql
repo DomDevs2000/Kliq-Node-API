@@ -7,12 +7,12 @@ CREATE DATABASE IF NOT EXISTS joinkliq;
 /* create table */
 CREATE TABLE IF NOT EXISTS users (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    application_id INT(100) NOT NULL,
-    first_name VARCHAR(50) NOT NULL,
-    last_name VARCHAR(50) NOT NULL,
-    email VARCHAR(100) UNIQUE NOT NULL,
-    password VARCHAR(100) NOT NULL,
-    phone_number VARCHAR(20) NOT NULL,
-    photo_url VARCHAR(100) NOT NULL,
-    referral_url VARCHAR(100) NOT NULL
-);;
+    application_id INT(100)  NULL,
+    first_name VARCHAR(50)  NULL,
+    last_name VARCHAR(50)  NULL,
+    email VARCHAR(100) UNIQUE  NULL,
+    password VARCHAR(100)  NULL,
+    phone_number VARCHAR(20)  NULL,
+    photo_url VARCHAR(100)  NULL,
+    referral_url VARCHAR(100) NULL
+);
