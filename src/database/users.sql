@@ -5,7 +5,7 @@ GRANT ALL PRIVILEGES ON * . * TO 'joinkliq'@'localhost';
 /* create new database */
 CREATE DATABASE IF NOT EXISTS joinkliq;
 /* create new user */
-CREATE TABLE IF NOT EXISTS customers (
+CREATE TABLE IF NOT EXISTS users (
 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
     application_id int(100) NOT NULL,
     first_name VARCHAR(50) NOT NULL,
