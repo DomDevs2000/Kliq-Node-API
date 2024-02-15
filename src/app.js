@@ -20,7 +20,7 @@ app.use("/", (req, res) => {
     res.status(200);
     res.send("Welcome to JoinKliq Users API");
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 });
 export { app };
