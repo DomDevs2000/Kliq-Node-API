@@ -1,9 +1,6 @@
 import userRepository from "../database/user.repository.js";
 
-class UserService {
-  async getAllUsers() {
-    return await userRepository.getAllUsers();
-  }
+async function getAllUsers() {
+  return await userRepository.getAllUsers();
 }
-
-export { UserService };
+export default { getAllUsers };
