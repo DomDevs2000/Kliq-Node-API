@@ -1,24 +1,24 @@
 class User {
-  constructor(
+  constructor({
     id,
-    applicationId,
-    firstName,
-    lastName,
+    application_id,
+    first_name,
+    last_name,
     email,
     password,
-    phoneNumber,
-    photoUrl,
-    referralUrl,
-  ) {
+    phone_number,
+    photo_url,
+    referral_url,
+  }) {
     this.id = id;
-    this.applicationId = applicationId;
-    this.firstName = firstName;
-    this.lastName = lastName;
+    this.application_id = application_id;
+    this.first_name = first_name;
+    this.last_name = last_name;
     this.email = email;
     this.password = password;
-    this.phoneNumber = phoneNumber;
-    this.photoUrl = photoUrl;
-    this.referralUrl = referralUrl;
+    this.phone_number = phone_number;
+    this.photo_url = photo_url;
+    this.referral_url = referral_url;
   }
 
   // Getters
@@ -27,15 +27,15 @@ class User {
   }
 
   getApplicationId() {
-    return this.applicationId;
+    return this.application_id;
   }
 
   getFirstName() {
-    return this.firstName;
+    return this.first_name;
   }
 
   getLastName() {
-    return this.lastName;
+    return this.last_name;
   }
 
   getEmail() {
@@ -47,15 +47,15 @@ class User {
   }
 
   getPhoneNumber() {
-    return this.phoneNumber;
+    return this.phone_number;
   }
 
   getPhotoUrl() {
-    return this.photoUrl;
+    return this.photo_url;
   }
 
   getReferralUrl() {
-    return this.referralUrl;
+    return this.referral_url;
   }
 }
 
