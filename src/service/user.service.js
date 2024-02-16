@@ -1,8 +1,8 @@
-import { userRepository } from "../server.js";
+import userRepository from "../database/user.repository.js";
 
 class UserService {
   async getAllUsers() {
-    return userRepository.getAllUsers();
+    return await userRepository.getAllUsers();
   }
 }
 
