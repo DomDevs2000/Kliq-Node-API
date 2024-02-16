@@ -24,4 +24,16 @@ async function getAllUsers() {
   }
 }
 
-export default { getAllUsers };
+async function findUserById(id) {
+  try {
+    const [results] = await connection.query(
+      "SELECT * FROM users WHERE id = ?",
+      [id],
+    );
+    return results;
+  } catch (error) {
+    console.log(err);
+  }
+}
+
+export default { getAllUsers, findUserById };

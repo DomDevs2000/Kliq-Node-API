@@ -5,4 +5,9 @@ async function getAllUsers() {
   const users = await userRepository.getAllUsers();
   return users.map((user) => new User(user));
 }
-export default { getAllUsers };
+
+async function findUserById(id) {
+  const userbyId = await userRepository.findUserById(id);
+  return userbyId.map((user) => new User(user));
+}
+export default { getAllUsers, findUserById };

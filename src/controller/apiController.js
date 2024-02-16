@@ -13,4 +13,14 @@ router.get("/users", async (_req, res) => {
   }
 });
 
+router.get("/users/:id", async (req, res) => {
+  try {
+    const userById = await userService.findUserById(req.params.id);
+    res.status(200).json(userById);
+  } catch (error) {
+    console.error(error);
+    res.status(400).json({ error: error });
+  }
+});
+
 export { router };
