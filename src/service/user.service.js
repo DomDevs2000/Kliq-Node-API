@@ -1,7 +1,9 @@
 import { userRepository } from "../server.js";
 
-async function getAllUsers() {
-  userRepository.getAllUsers();
+class UserService {
+  async getAllUsers() {
+    return userRepository.getAllUsers();
+  }
 }
 
-export { getAllUsers };
+export { UserService };
