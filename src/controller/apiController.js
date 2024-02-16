@@ -7,7 +7,7 @@ router.get("/", async (req, res) => {
     let sql = "SELECT * FROM users";
     connection.query(sql, function (error, results, fields) {
       if (error) throw error;
-      res.send(200).json(results);
+      res.status(200).json(results);
     });
   } catch (error) {
     console.error(error);
