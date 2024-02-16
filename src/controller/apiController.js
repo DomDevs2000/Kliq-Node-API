@@ -1,7 +1,9 @@
 import express from "express";
-const router = express.Router();
 import { UserService } from "../service/user.service.js";
+
+const router = express.Router();
 const userService = new UserService();
+
 router.get("/users", async (_req, res) => {
   try {
     const users = await userService.getAllUsers();
