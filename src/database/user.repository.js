@@ -1,4 +1,4 @@
-import mysql from "mysql";
+import mysql from "mysql2";
 
 class UserRepository {
   constructor() {
@@ -20,14 +20,14 @@ class UserRepository {
   }
   // method to get all users
   getAllUsers() {
-    const selectAllQuery = "SELECT * FROM users";
-    this.connection.query(selectAllQuery, (err, results) => {
-      if (err) {
-        console.error("Error fetching all users:", err);
-      } else {
-        console.log("Fetched all users successfully", results);
-      }
-    });
+    this.connection.query(
+      "SELECT * FROM users",
+      function (err, results, fields) {
+        if (err) console.log(err);
+        console.log(results);
+        console.log(fields);
+      },
+    );
   }
 }
 export { UserRepository };
