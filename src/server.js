@@ -1,4 +1,3 @@
-import { connection } from "./database/db.js";
 import { UserRepository } from "./database/user.repository.js";
 import { app } from "./app.js";
 
