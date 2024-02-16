@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "dev": "node src/server.js",
-    "test": "vitest --watch --coverage"
+    "test": "vitest --coverage",
+    "test:dev": "vitest --watch"
   },
   "keywords": [],
   "author": "Aidan Carvalho",
