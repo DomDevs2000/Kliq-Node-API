@@ -1,4 +1,5 @@
 import request from "supertest";
+import { describe, expect, it, vi } from "vitest";
 import { app } from "../src/app";
 
 describe("Test the server", () => {
