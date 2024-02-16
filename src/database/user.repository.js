@@ -18,7 +18,6 @@ try {
 async function getAllUsers() {
   try {
     const [results] = await connection.query("SELECT * FROM users");
-    console.log(results);
     return results;
   } catch (error) {
     console.log(err);
