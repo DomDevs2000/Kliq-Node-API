@@ -23,4 +23,15 @@ router.get("/users/:id", async (req, res) => {
   }
 });
 
+router.get("/users/name/:first_name", async (req, res) => {
+  try {
+    const userByName = await userService.findUserByFirstName(
+      req.params.first_name,
+    );
+    res.status(200).json(userByName);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 export { router };

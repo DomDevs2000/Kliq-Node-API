@@ -36,4 +36,15 @@ async function findUserById(id) {
   }
 }
 
-export default { getAllUsers, findUserById };
+async function findUserByFirstName(firstName) {
+  try {
+    const [results] = await connection.query(
+      "SELECT * FROM users WHERE first_name = ?",
+      [firstName],
+    );
+    return results;
+  } catch (error) {
+    console.log(error);
+  }
+}
+export default { getAllUsers, findUserById, findUserByFirstName };
