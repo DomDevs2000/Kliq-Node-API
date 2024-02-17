@@ -23,12 +23,23 @@ router.get("/users/:id", async (req, res) => {
   }
 });
 
-router.get("/users/name/:first_name", async (req, res) => {
+router.get("/users/firstname/:first_name", async (req, res) => {
   try {
-    const userByName = await userService.findUserByFirstName(
+    const userByFirstName = await userService.findUserByFirstName(
       req.params.first_name,
     );
-    res.status(200).json(userByName);
+    res.status(200).json(userByFirstName);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+router.get("/users/lastname/:last_name", async (req, res) => {
+  try {
+    const userByLastName = await userService.findUserByLastName(
+      req.params.last_name,
+    );
+    res.status(200).json(userByLastName);
   } catch (error) {
     console.log(error);
   }

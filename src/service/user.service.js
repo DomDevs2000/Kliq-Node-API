@@ -15,4 +15,14 @@ async function findUserByFirstName(name) {
   const userByFirstName = await userRepository.findUserByFirstName(name);
   return userByFirstName.map((user) => new User(user));
 }
-export default { getAllUsers, findUserById, findUserByFirstName };
+
+async function findUserByLastName(name) {
+  const userByLastName = await userRepository.findUserByLastName(name);
+  return userByLastName.map((user) => new User(user));
+}
+export default {
+  getAllUsers,
+  findUserById,
+  findUserByFirstName,
+  findUserByLastName,
+};
