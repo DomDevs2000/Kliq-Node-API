@@ -1,3 +1,4 @@
+import bcrypt from "bcrypt";
 class User {
   constructor({
     id,
@@ -21,6 +22,10 @@ class User {
     this.referral_url = referral_url;
   }
 
+  async hashPassword() {
+    const salt = 10;
+    this.password = await bcrypt.hash(this.password, salt);
+  }
   // Getters
   getId() {
     return this.id;

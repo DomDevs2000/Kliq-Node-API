@@ -61,13 +61,14 @@ async function findUserByLastName(lastName) {
 
 async function createUser(user) {
   try {
+    const hashedPassword = user.hashPassword();
     const results = await connection.query(
       "INSERT INTO users (first_name, last_name, email, password, phone_number, photo_url, referral_url) VALUES (?, ?, ?, ?)",
       [
         user.first_name,
         user.last_name,
         user.email,
-        user.password,
+        hashedPassword,
         user.phone_number,
         user.photo_url,
         user.referral_url,
@@ -90,13 +91,14 @@ async function deleteUser(id) {
 
 async function updateUser(id, user) {
   try {
+    const hashedPassword = user.hashPassword();
     const results = await connection.query(
       "UPDATE users SET first_name = ?, last_name = ?, email = ?, password = ?, phone_number = ?, photo_url = ?, referral_url = ? WHERE id = ?",
       [
         user.first_name,
         user.last_name,
         user.email,
-        user.password,
+        hashedPassword,
         user.phone_number,
         user.photo_url,
         user.referral_url,
