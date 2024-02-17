@@ -20,9 +20,27 @@ async function findUserByLastName(name) {
   const userByLastName = await userRepository.findUserByLastName(name);
   return userByLastName.map((user) => new User(user));
 }
+
+async function createUser(user) {
+  const createdUser = await userRepository.createUser(user);
+  return createdUser;
+}
+
+async function deleteUser(id) {
+  const deletedUser = await userRepository.deleteUser(id);
+  return deletedUser;
+}
+
+async function updateUser(id, user) {
+  const updatedUser = await userRepository.updateUser(id, user);
+  return updatedUser;
+}
 export default {
   getAllUsers,
   findUserById,
   findUserByFirstName,
   findUserByLastName,
+  createUser,
+  deleteUser,
+  updateUser,
 };

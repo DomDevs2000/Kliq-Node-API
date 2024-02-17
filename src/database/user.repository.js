@@ -59,9 +59,62 @@ async function findUserByLastName(lastName) {
   }
 }
 
+async function createUser(user) {
+  try {
+    const results = await connection.query(
+      "INSERT INTO users (first_name, last_name, email, password, phone_number, photo_url, referral_url) VALUES (?, ?, ?, ?)",
+      [
+        user.first_name,
+        user.last_name,
+        user.email,
+        user.password,
+        user.phone_number,
+        user.photo_url,
+        user.referral_url,
+      ],
+    );
+    return results;
+  } catch (error) {}
+}
+
+async function deleteUser(id) {
+  try {
+    const results = await connection.query("DELETE FROM users WHERE id = ?", [
+      id,
+    ]);
+    return results;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+async function updateUser(id, user) {
+  try {
+    const results = await connection.query(
+      "UPDATE users SET first_name = ?, last_name = ?, email = ?, password = ?, phone_number = ?, photo_url = ?, referral_url = ? WHERE id = ?",
+      [
+        user.first_name,
+        user.last_name,
+        user.email,
+        user.password,
+        user.phone_number,
+        user.photo_url,
+        user.referral_url,
+        id,
+      ],
+    );
+    return results;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export default {
   getAllUsers,
   findUserById,
   findUserByFirstName,
   findUserByLastName,
+  createUser,
+  deleteUser,
+  updateUser,
 };
