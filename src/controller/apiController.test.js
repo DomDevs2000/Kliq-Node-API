@@ -12,7 +12,6 @@ describe("API Controller tests", () => {
 
     expect(res.body).toEqual([
       {
-        id: 1,
         application_id: null,
         first_name: "Tech",
         last_name: "Support",
@@ -25,5 +24,6 @@ describe("API Controller tests", () => {
         referral_url: null,
       },
     ]);
+    expect(res.status).toBe(200);
   });
 });
