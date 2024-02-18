@@ -1,4 +1,5 @@
 import mysql from "mysql2/promise";
+import { v4 as uuidv4 } from "uuid";
 //creates a new mysql connection
 let connection;
 try {
@@ -58,24 +59,31 @@ async function findUserByLastName(lastName) {
     console.log(error);
   }
 }
+// TODO:new function find by both names - use & statement
 
+// IMPORt UUID change user.id to uuid
 async function createUser(user) {
   try {
-    const hashedPassword = user.hashPassword();
+    await user.hashPassword();
     const results = await connection.query(
-      "INSERT INTO users (first_name, last_name, email, password, phone_number, photo_url, referral_url) VALUES (?, ?, ?, ?)",
+      "INSERT INTO users (id, application_id,first_name, last_name, email, password, phone_number, photo_url, referral_url) VALUES (?,?, ?, ?, ? , ? ,? , ?, ?)",
       [
+        uuidv4(),
+        user.application_id,
         user.first_name,
         user.last_name,
         user.email,
-        hashedPassword,
+        user.password,
         user.phone_number,
         user.photo_url,
         user.referral_url,
       ],
     );
+
     return results;
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 async function deleteUser(id) {
@@ -91,14 +99,14 @@ async function deleteUser(id) {
 
 async function updateUser(id, user) {
   try {
-    const hashedPassword = user.hashPassword();
+    await user.hashPassword();
     const results = await connection.query(
       "UPDATE users SET first_name = ?, last_name = ?, email = ?, password = ?, phone_number = ?, photo_url = ?, referral_url = ? WHERE id = ?",
       [
         user.first_name,
         user.last_name,
         user.email,
-        hashedPassword,
+        user.password,
         user.phone_number,
         user.photo_url,
         user.referral_url,
