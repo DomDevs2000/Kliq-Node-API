@@ -1,12 +1,11 @@
-/* create new user */
 CREATE USER IF NOT EXISTS 'joinkliq'@'localhost' IDENTIFIED BY 'joinkliq';
-/*  give user  permissions*/
 GRANT ALL PRIVILEGES ON * . * TO 'joinkliq'@'localhost';
-/* create new database */
-CREATE DATABASE IF NOT EXISTS joinkliq;
+CREATE DATABASE IF NOT EXISTS joinkliq_users;
+use joinkliq_users;
+SET GLOBAL local_infile=1;
 /* create table */
 CREATE TABLE IF NOT EXISTS users (
-    id MEDIUMINT NOT NULL AUTO_INCREMENT,
+    id VARCHAR(36) NOT NULL,
     application_id INT(100)  NULL,
     first_name VARCHAR(50)  NULL,
     last_name VARCHAR(50)  NULL,
@@ -17,3 +16,4 @@ CREATE TABLE IF NOT EXISTS users (
     referral_url VARCHAR(255) NULL,
     PRIMARY KEY (id)
 );
+
