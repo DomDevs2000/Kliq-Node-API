@@ -59,7 +59,6 @@ async function findUserByLastName(lastName) {
     console.log(error);
   }
 }
-// TODO:new function find by both names - use & statement
 
 async function findUserByBothNames(firstName, lastName) {
   try {
