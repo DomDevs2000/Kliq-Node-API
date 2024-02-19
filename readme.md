@@ -3,7 +3,7 @@
 To run the application, run the bash script via /scripts/users.sh (note you may need to run 'chmod +x /scripts/users.sh' to make it executable)
 this will run 4 commands:
 
-1. runs a sql creation scritp to create the user, database and table
+1. runs a sql creation script to create the user, database and table
 2. runs a mysql script to insert data from the csv file to the database
 3. runs npm install to install all the required packages
 4. runs npm start to start the application on localhost:3000
@@ -61,7 +61,3 @@ e.g
 to delete a user, a delete request can be made to /api/users/ id (id being the the id of the user you want to delete)
 
 e.g - localhost:3000/api/users/1
-
-```
-
-```
