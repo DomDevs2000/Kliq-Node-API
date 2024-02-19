@@ -1,22 +1,23 @@
 # Running the application
 
 To run the application, run the bash script via /scripts/users.sh (note you may need to run 'chmod +x /scripts/users.sh' to make it executable)
-this will run 3 commands:
+this will run 4 commands:
 
 1. runs a sql creation scritp to create the user, database and table
 2. runs a mysql script to insert data from the csv file to the database
 3. runs npm install to install all the required packages
+4. runs npm start to start the application on localhost:3000
 
 once the project is running, you can access the application via localhost:3000/api/users
 
 # GET /api/users
 
-this will return all users in the database
+/api/users will return all users in the database
 
 you can query for a specific user by their first and/or last name by adding a query string to the url
 e.g - localhost:3000/api/users?first_name=John
 or - localhost:3000/api/users?last_name=Doe
-or - localhost:3000/api/users?first_name=John&last_name=Doe
+or both - localhost:3000/api/users?first_name=John&last_name=Doe
 
 # POST /api/users
 
