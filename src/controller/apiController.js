@@ -37,8 +37,7 @@ router.post("/users", async (req, res) => {
   try {
     const user = req.body;
     const createdUser = await userService.createUser(user);
-
-    res.status(201).json(createdUser);
+    res.status(201).send(createdUser);
   } catch (error) {
     res.status(400).send({ message: "User Not Created" });
     console.log(error);
