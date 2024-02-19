@@ -1,6 +1,5 @@
 import express from "express";
 import userService from "../service/user.service.js";
-
 const router = express.Router();
 
 /*
@@ -9,9 +8,7 @@ GET
 router.get("/users", async (req, res) => {
   try {
     if (Object.keys(req.query).length) {
-      // const users = await userService.findUserByName(req.query);
-      const first_name = req.query.first_name;
-      const users = await userService.findUserByFirstName(first_name);
+      const users = await userService.findUserByName(req.query);
       res.status(200).json(users);
     } else {
       const users = await userService.getAllUsers();

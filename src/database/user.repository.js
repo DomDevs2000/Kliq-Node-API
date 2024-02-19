@@ -61,6 +61,17 @@ async function findUserByLastName(lastName) {
 }
 // TODO:new function find by both names - use & statement
 
+async function findUserByBothNames(firstName, lastName) {
+  try {
+    const [results] = await connection.query(
+      "SELECT * FROM users WHERE first_name = ? AND last_name = ?",
+      [firstName, lastName],
+    );
+    return results;
+  } catch (error) {
+    console.log(error);
+  }
+}
 // IMPORt UUID change user.id to uuid
 async function createUser(user) {
   try {
@@ -127,4 +138,5 @@ export default {
   createUser,
   deleteUser,
   updateUser,
+  findUserByBothNames,
 };

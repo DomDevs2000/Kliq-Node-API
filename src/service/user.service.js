@@ -14,17 +14,24 @@ async function findUserById(id) {
 async function findUserByName(query) {
   const { first_name, last_name } = query;
   if (first_name) {
-    const userByFirstName = await userService.findUserByFirstName(first_name);
-    return userByFirstName.map((user) => new User(user));
+    const userByFirstName = await findUserByFirstName(first_name);
+    return userByFirstName;
   } else if (last_name) {
-    const userByLastName = await userService.findUserByLastName(last_name);
-    return userByLastName.map((user) => new User(user));
+    const userByLastName = await findUserByLastName(last_name);
+    return userByLastName;
   } else if (first_name && last_name) {
-    // const users = await userService.findByBothNames();
-    // return users.map((user) => new User(user));
+    const users = await findUserByBothNames(first_name, last_name);
+    return users;
   }
 }
-//TODO:create function that finds by first and last name
+
+async function findUserByBothNames(first_name, last_name) {
+  const userByBothNames = await userRepository.findUserByBothNames(
+    first_name,
+    last_name,
+  );
+  return userByBothNames.map((user) => new User(user));
+}
 
 async function findUserByFirstName(name) {
   const userByFirstName = await userRepository.findUserByFirstName(name);
@@ -53,8 +60,6 @@ async function updateUser(id, user) {
 export default {
   getAllUsers,
   findUserById,
-  findUserByFirstName,
-  findUserByLastName,
   createUser,
   deleteUser,
   updateUser,
