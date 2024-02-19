@@ -39,8 +39,6 @@ router.get("/users/:id", async (req, res) => {
 router.post("/users", async (req, res) => {
   try {
     const user = req.body;
-    console.log(user);
-    console.log(req.body);
     const createdUser = await userService.createUser(user);
 
     res.status(201).json(createdUser);
