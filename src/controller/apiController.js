@@ -10,7 +10,8 @@ router.get("/users", async (req, res) => {
   try {
     if (Object.keys(req.query).length) {
       // const users = await userService.findUserByName(req.query);
-      const users = await userService.findUserByFirstName(req.query.first_name);
+      const first_name = req.query.first_name;
+      const users = await userService.findUserByFirstName(first_name);
       res.status(200).json(users);
     } else {
       const users = await userService.getAllUsers();
@@ -24,7 +25,8 @@ router.get("/users", async (req, res) => {
 
 router.get("/users/:id", async (req, res) => {
   try {
-    const userById = await userService.findUserById(req.params.id);
+    const userId = req.params.id;
+    const userById = await userService.findUserById(userId);
     res.status(200).json(userById);
   } catch (error) {
     console.error(error);
