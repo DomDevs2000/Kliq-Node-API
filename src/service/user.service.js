@@ -10,7 +10,7 @@ async function findUserById(id) {
   const userById = await userRepository.findUserById(id);
   return userById.map((user) => new User(user));
 }
-//create method that receives req.query
+
 async function findUserByName(query) {
   const { first_name, last_name } = query;
   if (first_name) {
