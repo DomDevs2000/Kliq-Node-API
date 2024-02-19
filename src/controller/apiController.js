@@ -1,7 +1,8 @@
 import express from "express";
 import userService from "../service/user.service.js";
 const router = express.Router();
-
+import { validationResult } from "express-validator";
+import { validateCreateUser } from "../middleware/userValidator.js";
 /*
 GET
 */
@@ -33,14 +34,19 @@ router.get("/users/:id", async (req, res) => {
 /*
  POST
 */
-router.post("/users", async (req, res) => {
+router.post("/users", validateCreateUser, async (req, res) => {
   try {
-    const user = req.body;
-    const createdUser = await userService.createUser(user);
-    res.status(201).send(createdUser);
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    } else {
+      const user = req.body;
+      await userService.createUser(user);
+      res.status(200).send("User Created");
+    }
   } catch (error) {
-    res.status(400).send({ message: "User Not Created" });
-    console.log(error);
+    console.error(error);
+    return res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
