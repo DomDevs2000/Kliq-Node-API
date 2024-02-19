@@ -109,9 +109,7 @@ async function deleteUser(id) {
 
 async function updateUser(id, user) {
   try {
-    //TODO: user.hashpassword() is not a function on PUT
-
-    // await user.hashPassword();
+    await user.hashPassword();
     const results = await connection.query(
       "UPDATE users SET first_name = ?, last_name = ?, email = ?, password = ?, phone_number = ?, photo_url = ?, referral_url = ? WHERE id = ?",
       [

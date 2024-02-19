@@ -54,7 +54,7 @@ async function deleteUser(id) {
 }
 
 async function updateUser(id, user) {
-  const updatedUser = await userRepository.updateUser(id, user);
+  const updatedUser = await userRepository.updateUser(id, new User(user));
   return updatedUser;
 }
 export default {
