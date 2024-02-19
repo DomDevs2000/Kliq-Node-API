@@ -2,7 +2,10 @@ import express from "express";
 import userService from "../service/user.service.js";
 const router = express.Router();
 import { validationResult } from "express-validator";
-import { validateCreateUser } from "../middleware/userValidator.js";
+import {
+  validateCreateUser,
+  validateUpdateUser,
+} from "../middleware/userValidator.js";
 /*
 GET
 */
@@ -72,15 +75,18 @@ router.delete("/users/:id", async (req, res) => {
 /*
  UPDATE
 */
-router.put("/users/:id", async (req, res) => {
+router.put("/users/:id", validateUpdateUser, async (req, res) => {
   try {
-    const updatedUser = req.body;
-    const userId = req.params.id;
-    if (!userId || !updatedUser) {
-      res.status(400).send({ message: "Missing Required Information" });
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    } else {
+      const updatedUser = req.body;
+      const userId = req.params.id;
+
+      await userService.updateUser(userId, updatedUser);
+      res.status(200).json({ message: "User with id " + userId + " updated" });
     }
-    await userService.updateUser(userId, updatedUser);
-    res.status(200).json({ message: "User with id " + userId + " updated" });
   } catch (error) {
     res.status(400).send({ message: "User Not Updated" });
     console.log(error);
