@@ -73,14 +73,16 @@ router.post("/users", validateCreateUser, async (req, res) => {
  */
 router.delete("/users/:id", validateId, async (req, res) => {
   try {
-    const deletedUserId = req.params.id;
-    if (!deletedUserId) {
-      res.status(400).send({ message: "Missing Required Information" });
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    } else {
+      const deletedUserId = req.params.id;
+      await userService.deleteUser(deletedUserId);
+      res
+        .status(200)
+        .send({ message: "User with id " + deletedUserId + " deleted" });
     }
-    await userService.deleteUser(deletedUserId);
-    res
-      .status(200)
-      .send({ message: "User with id " + deletedUserId + " deleted" });
   } catch (error) {
     res.status(400).send({ message: "User Not Deleted" });
     console.log(error);
