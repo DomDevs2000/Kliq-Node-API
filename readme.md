@@ -61,3 +61,7 @@ e.g
 to delete a user, a delete request can be made to /api/users/ id (id being the the id of the user you want to delete)
 
 e.g - localhost:3000/api/users/1
+
+# Testing
+
+to run tests run npm run test
