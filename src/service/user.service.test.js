@@ -4,83 +4,25 @@ import userService from "./user.service.js";
 import { User } from "../models/user.model.js";
 
 vi.mock("../database/user.repository.js", async () => {
+  const user = {
+    id: 1,
+    application_id: null,
+    first_name: "Tech",
+    last_name: "Support",
+    email: "info@remotecoach.fit",
+    password: "$2y$10$n3293NxnekVK1Sry/OO.f.gc9WvvbwZ2IcOELjIkjfeKns2GREpAO",
+    phone_number: null,
+    photo_url:
+      "https://prod-img-cdn.remotecoach.fit/assets/86a13ad1-5404-43ed-b3cf-e35f9663c871/image_picker_E51BD2CE-EBE7-4E29-AF38-FCC808EF0E10-745-000000384888B683.png",
+    referral_url: null,
+  };
   return {
     default: {
-      getAllUsers: vi.fn().mockResolvedValue([
-        {
-          id: 1,
-          application_id: null,
-          first_name: "Tech",
-          last_name: "Support",
-          email: "info@remotecoach.fit",
-          password:
-            "$2y$10$n3293NxnekVK1Sry/OO.f.gc9WvvbwZ2IcOELjIkjfeKns2GREpAO",
-          phone_number: null,
-          photo_url:
-            "https://prod-img-cdn.remotecoach.fit/assets/86a13ad1-5404-43ed-b3cf-e35f9663c871/image_picker_E51BD2CE-EBE7-4E29-AF38-FCC808EF0E10-745-000000384888B683.png",
-          referral_url: null,
-        },
-      ]),
-      findUserById: vi.fn().mockResolvedValue([
-        {
-          id: 1,
-          application_id: null,
-          first_name: "Tech",
-          last_name: "Support",
-          email: "info@remotecoach.fit",
-          password:
-            "$2y$10$n3293NxnekVK1Sry/OO.f.gc9WvvbwZ2IcOELjIkjfeKns2GREpAO",
-          phone_number: null,
-          photo_url:
-            "https://prod-img-cdn.remotecoach.fit/assets/86a13ad1-5404-43ed-b3cf-e35f9663c871/image_picker_E51BD2CE-EBE7-4E29-AF38-FCC808EF0E10-745-000000384888B683.png",
-          referral_url: null,
-        },
-      ]),
-      findUserByFirstName: vi.fn().mockResolvedValue([
-        {
-          id: 1,
-          application_id: null,
-          first_name: "Tech",
-          last_name: "Support",
-          email: "info@remotecoach.fit",
-          password:
-            "$2y$10$n3293NxnekVK1Sry/OO.f.gc9WvvbwZ2IcOELjIkjfeKns2GREpAO",
-          phone_number: null,
-          photo_url:
-            "https://prod-img-cdn.remotecoach.fit/assets/86a13ad1-5404-43ed-b3cf-e35f9663c871/image_picker_E51BD2CE-EBE7-4E29-AF38-FCC808EF0E10-745-000000384888B683.png",
-          referral_url: null,
-        },
-      ]),
-      findUserByLastName: vi.fn().mockResolvedValue([
-        {
-          id: 1,
-          application_id: null,
-          first_name: "Tech",
-          last_name: "Support",
-          email: "info@remotecoach.fit",
-          password:
-            "$2y$10$n3293NxnekVK1Sry/OO.f.gc9WvvbwZ2IcOELjIkjfeKns2GREpAO",
-          phone_number: null,
-          photo_url:
-            "https://prod-img-cdn.remotecoach.fit/assets/86a13ad1-5404-43ed-b3cf-e35f9663c871/image_picker_E51BD2CE-EBE7-4E29-AF38-FCC808EF0E10-745-000000384888B683.png",
-          referral_url: null,
-        },
-      ]),
-      findUserByBothNames: vi.fn().mockResolvedValue([
-        {
-          id: 1,
-          application_id: null,
-          first_name: "Tech",
-          last_name: "Support",
-          email: "info@remotecoach.fit",
-          password:
-            "$2y$10$n3293NxnekVK1Sry/OO.f.gc9WvvbwZ2IcOELjIkjfeKns2GREpAO",
-          phone_number: null,
-          photo_url:
-            "https://prod-img-cdn.remotecoach.fit/assets/86a13ad1-5404-43ed-b3cf-e35f9663c871/image_picker_E51BD2CE-EBE7-4E29-AF38-FCC808EF0E10-745-000000384888B683.png",
-          referral_url: null,
-        },
-      ]),
+      getAllUsers: vi.fn().mockResolvedValue([user]),
+      findUserById: vi.fn().mockResolvedValue([user]),
+      findUserByFirstName: vi.fn().mockResolvedValue([user]),
+      findUserByLastName: vi.fn().mockResolvedValue([user]),
+      findUserByBothNames: vi.fn().mockResolvedValue([user]),
       createUser: vi.fn().mockResolvedValue([]),
       updateUser: vi.fn().mockResolvedValue([]),
       deleteUser: vi.fn().mockResolvedValue([]),
@@ -122,8 +64,8 @@ describe("User service", () => {
     });
     expect(users.length).toBe(1);
     expect(users[0]).toBeInstanceOf(User);
-    //TODO: fix findByBothNames() not being called
-    // expect(userRepository.findUserByBothNames).toHaveBeenCalledTimes(1);
+    // TODO: fix findByBothNames() not being called
+    expect(userRepository.findUserByBothNames).toHaveBeenCalledTimes(1);
   });
   it("should create a user", async () => {
     const newUser = {

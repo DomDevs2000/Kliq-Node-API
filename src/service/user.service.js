@@ -13,10 +13,10 @@ async function findUserById(id) {
 
 async function findUserByName(query) {
   const { first_name, last_name } = query;
-  if (first_name) {
+  if (first_name && !last_name) {
     const userByFirstName = await findUserByFirstName(first_name);
     return userByFirstName;
-  } else if (last_name) {
+  } else if (last_name && !first_name) {
     const userByLastName = await findUserByLastName(last_name);
     return userByLastName;
   } else if (first_name && last_name) {
