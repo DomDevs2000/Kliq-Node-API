@@ -26,42 +26,6 @@ class User {
     const salt = 10;
     this.password = await bcrypt.hash(this.password, salt);
   }
-  // Getters
-  getId() {
-    return this.id;
-  }
-
-  getApplicationId() {
-    return this.application_id;
-  }
-
-  getFirstName() {
-    return this.first_name;
-  }
-
-  getLastName() {
-    return this.last_name;
-  }
-
-  getEmail() {
-    return this.email;
-  }
-
-  getPassword() {
-    return this.password;
-  }
-
-  getPhoneNumber() {
-    return this.phone_number;
-  }
-
-  getPhotoUrl() {
-    return this.photo_url;
-  }
-
-  getReferralUrl() {
-    return this.referral_url;
-  }
 }
 
 export { User };
