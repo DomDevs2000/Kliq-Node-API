@@ -8,6 +8,3 @@ mysqlimport --ignore-lines=1 --fields-terminated-by=',' --verbose --local -u joi
 
 # install dependencies
 npm install
-
-# run the server
-npm run start
