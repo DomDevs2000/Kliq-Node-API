@@ -2,7 +2,7 @@ import request from "supertest";
 import { describe, expect, it } from "vitest";
 import { app } from "../app.js";
 describe("create user validation request", () => {
-  it("should 400 error if bad create user request with missing first name", async () => {
+  it("should return 400 if user request with missing first name", async () => {
     const user = {
       application_id: 0,
       // Missing first_name
@@ -28,7 +28,7 @@ describe("create user validation request", () => {
       ],
     });
   });
-  it("should 400 error if bad create user request with missing last name", async () => {
+  it("should return 400 error if create user request with missing last name", async () => {
     const user = {
       application_id: 0,
       first_name: "Janny",
