@@ -1,6 +1,7 @@
 import request from "supertest";
 import { describe, expect, it, vi } from "vitest";
 import { app } from "../app.js";
+
 vi.mock("../database/user.repository.js", async () => {
   const user = {
     id: 1,
@@ -33,6 +34,7 @@ describe("API Controller tests", () => {
     const res = await request(app).get("/users");
     expect(res.status).toBe(200);
   });
+
   it("should return a user by id", async () => {
     const res = await request(app).get("/api/users/1");
 
@@ -53,6 +55,7 @@ describe("API Controller tests", () => {
     ]);
     expect(res.status).toBe(200);
   });
+
   it("POST /users should create a new user", async () => {
     const newUser = {
       application_id: "2000",
@@ -76,6 +79,7 @@ describe("API Controller tests", () => {
     });
     expect(res.status).toBe(200);
   });
+
   it("DELETE /users/:id should delete a user by id", async () => {
     const res = await request(app).delete(
       "/users/0ecc5e07-e10b-4fd1-a005-b3c27aeea720",
@@ -111,6 +115,7 @@ describe("create user validation request", () => {
       ],
     });
   });
+
   it("should return 400 error if create user request with missing last name", async () => {
     const user = {
       application_id: 0,
@@ -125,6 +130,7 @@ describe("create user validation request", () => {
         "https://prod-img-cdn.remotecoach.fit/assets/86a13ad1-5404-43ed-b3cf-e35f9663c871/image_picker_E51BD2CE-EBE7-4E29-AF38-FCC808EF0E10-745-000000384888B683.png",
     };
     const res = await request(app).post("/api/users").send(user);
+
     expect(res.status).toBe(400);
     expect(res.body).toEqual({
       errors: [
@@ -142,6 +148,7 @@ describe("create user validation request", () => {
 describe("first name query string validation test", () => {
   it("should 400 error if empty query string", async () => {
     const res = await request(app).get("/api/users?first_name=");
+
     expect(res.status).toBe(400);
     expect(res.body).toEqual({
       errors: [
@@ -156,9 +163,11 @@ describe("first name query string validation test", () => {
     });
   });
 });
+
 describe("last name query string validation test", () => {
   it("should 400 error if empty query string", async () => {
     const res = await request(app).get("/api/users?last_name=");
+
     expect(res.status).toBe(400);
     expect(res.body).toEqual({
       errors: [
@@ -173,9 +182,11 @@ describe("last name query string validation test", () => {
     });
   });
 });
+
 describe("Id param validator test", () => {
   it("should 400 error if bad  id param request", async () => {
     const res = await request(app).get("/api/users/e");
+
     expect(res.status).toBe(400);
     expect(res.body).toEqual({
       errors: [
@@ -205,7 +216,9 @@ describe("Update user validation request", () => {
       referral_url:
         "https://prod-img-cdn.remotecoach.fit/assets/86a13ad1-5404-43ed-b3cf-e35f9663c871/image_picker_E51BD2CE-EBE7-4E29-AF38-FCC808EF0E10-745-000000384888B683.png",
     };
+
     const res = await request(app).put("/api/users/1").send(user);
+
     expect(res.status).toBe(400);
     expect(res.body).toEqual({
       errors: [
@@ -218,6 +231,7 @@ describe("Update user validation request", () => {
       ],
     });
   });
+
   it("should 400 error if bad update user request with missing last name", async () => {
     const user = {
       application_id: 0,
@@ -231,7 +245,9 @@ describe("Update user validation request", () => {
       referral_url:
         "https://prod-img-cdn.remotecoach.fit/assets/86a13ad1-5404-43ed-b3cf-e35f9663c871/image_picker_E51BD2CE-EBE7-4E29-AF38-FCC808EF0E10-745-000000384888B683.png",
     };
+
     const res = await request(app).put("/api/users/1").send(user);
+
     expect(res.status).toBe(400);
     expect(res.body).toEqual({
       errors: [
