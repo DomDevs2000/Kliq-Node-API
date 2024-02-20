@@ -1,4 +1,5 @@
 import { query } from "express-validator";
+
 export const validateFirstName = [
   query("first_name")
     .optional()
