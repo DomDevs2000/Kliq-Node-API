@@ -1,6 +1,7 @@
 import request from "supertest";
 import { describe, expect, it } from "vitest";
 import { app } from "../app.js";
+
 describe("Update user validation request", () => {
   it("should 400 error if bad update user request with missing first name", async () => {
     const user = {

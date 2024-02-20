@@ -1,4 +1,5 @@
 import { body } from "express-validator";
+
 export const validateUpdateUser = [
   body("application_id").notEmpty().withMessage("Application ID  is required"),
   body("first_name").notEmpty().withMessage("First name is required"),
