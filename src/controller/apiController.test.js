@@ -14,15 +14,16 @@ describe("API Controller tests", () => {
       {
         id: "1",
         application_id: 0,
-        first_name: "Tech",
-        last_name: "Support",
-        email: "info@remotecoach.fit",
+        first_name: "Janny",
+        last_name: "Doe",
+        email: "Jane@Doeeeeeee.org.uk",
         password:
-          "$2y$10$n3293NxnekVK1Sry/OO.f.gc9WvvbwZ2IcOELjIkjfeKns2GREpAO",
-        phone_number: "NULL",
+          "$2b$10$RRCXCwBTwF36PrDgNhgSl.EW9a6atbQUvCtATz7iT1gY831EwIyCe",
+        phone_number: "07414114152",
         photo_url:
+          "https://prod-cdn.remotecoach.fit/assets/86a13ad1-5404-43ed-b3cf-e35f9663c871/image_picker_E51BD2CE-EBE7-4E29-AF38-FCC808EF0E10-745-000000384888B683.png",
+        referral_url:
           "https://prod-img-cdn.remotecoach.fit/assets/86a13ad1-5404-43ed-b3cf-e35f9663c871/image_picker_E51BD2CE-EBE7-4E29-AF38-FCC808EF0E10-745-000000384888B683.png",
-        referral_url: "NULL",
       },
     ]);
     expect(res.status).toBe(200);
