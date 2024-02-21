@@ -72,7 +72,7 @@ async function findUserByBothNames(firstName, lastName) {
     console.log(error);
   }
 }
-// IMPORt UUID change user.id to uuid
+
 async function createUser(user) {
   try {
     await user.hashPassword();
