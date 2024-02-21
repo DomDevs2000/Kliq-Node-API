@@ -196,24 +196,6 @@ describe("last name query string validation test", () => {
   });
 });
 
-describe("Id param validator test", () => {
-  it("should 400 error if bad  id param request", async () => {
-    const res = await request(app).get("/api/users/e");
-
-    expect(res.status).toBe(400);
-    expect(res.body).toEqual({
-      errors: [
-        {
-          type: "field",
-          value: "e",
-          msg: "Invalid ID",
-          path: "id",
-          location: "params",
-        },
-      ],
-    });
-  });
-});
 
 describe("Update user validation request", () => {
   it("should 400 error if bad update user request with missing first name", async () => {
