@@ -1,5 +1,5 @@
-import userRepository from "../database/user.repository.js";
-import { User } from "../models/user.model.js";
+import userRepository from "../database/userRepository.js";
+import { User } from "../models/userModel.js";
 
 async function getAllUsers() {
   const users = await userRepository.getAllUsers();
