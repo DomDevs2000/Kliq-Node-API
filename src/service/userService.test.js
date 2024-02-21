@@ -64,7 +64,6 @@ describe("User service", () => {
     });
     expect(users.length).toBe(1);
     expect(users[0]).toBeInstanceOf(User);
-    // TODO: fix findByBothNames() not being called
     expect(userRepository.findUserByBothNames).toHaveBeenCalledTimes(1);
   });
   it("should create a user", async () => {
