@@ -2,7 +2,7 @@ import request from "supertest";
 import { describe, expect, it, vi } from "vitest";
 import { app } from "../app.js";
 
-vi.mock("../database/user.repository.js", async () => {
+vi.mock("../database/userRepository.js", async () => {
   const user = {
     id: 1,
     application_id: null,

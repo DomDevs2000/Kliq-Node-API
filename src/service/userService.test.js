@@ -1,9 +1,9 @@
 import { describe, expect, it, vi } from "vitest";
-import userRepository from "../database/user.repository.js";
-import userService from "./user.service.js";
-import { User } from "../models/user.model.js";
+import userRepository from "../database/userRepository.js";
+import userService from "./userService.js";
+import { User } from "../models/userModel.js";
 
-vi.mock("../database/user.repository.js", async () => {
+vi.mock("../database/userRepository.js", async () => {
   const user = {
     id: 1,
     application_id: null,

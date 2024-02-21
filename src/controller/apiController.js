@@ -1,5 +1,5 @@
 import express from "express";
-import userService from "../service/user.service.js";
+import userService from "../service/userService.js";
 const router = express.Router();
 import { validationResult } from "express-validator";
 import { validateId } from "../middleware/idValidation.js";
