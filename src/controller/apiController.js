@@ -1,7 +1,6 @@
 import express from "express";
 import userService from "../service/userService.js";
 import { validationResult } from "express-validator";
-import { validateId } from "../middleware/idValidation.js";
 import { validateFirstName } from "../middleware/firstNameQueryValidation.js";
 import { validateLastName } from "../middleware/lastNameQueryValidation.js";
 import { validateUpdateUser } from "../middleware/updateUserValidation.js";
@@ -13,7 +12,6 @@ GET
 */
 router.get(
   "/users",
-  validateId,
   validateFirstName,
   validateLastName,
   async (req, res) => {
@@ -35,7 +33,7 @@ router.get(
   },
 );
 
-router.get("/users/:id", validateId, async (req, res) => {
+router.get("/users/:id", async (req, res) => {
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -72,7 +70,7 @@ router.post("/users", validateCreateUser, async (req, res) => {
 /*
  DELETE
  */
-router.delete("/users/:id", validateId, async (req, res) => {
+router.delete("/users/:id",  async (req, res) => {
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -93,7 +91,7 @@ router.delete("/users/:id", validateId, async (req, res) => {
 /*
  UPDATE
 */
-router.put("/users/:id", validateId, validateUpdateUser, async (req, res) => {
+router.put("/users/:id",  validateUpdateUser, async (req, res) => {
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
