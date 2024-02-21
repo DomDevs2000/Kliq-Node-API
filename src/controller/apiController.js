@@ -1,12 +1,13 @@
 import express from "express";
 import userService from "../service/userService.js";
-const router = express.Router();
 import { validationResult } from "express-validator";
 import { validateId } from "../middleware/idValidation.js";
 import { validateFirstName } from "../middleware/firstNameQueryValidation.js";
 import { validateLastName } from "../middleware/lastNameQueryValidation.js";
 import { validateUpdateUser } from "../middleware/updateUserValidation.js";
 import { validateCreateUser } from "../middleware/createUserValidation.js";
+
+const router = express.Router();
 /*
 GET
 */

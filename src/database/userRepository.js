@@ -1,5 +1,6 @@
 import mysql from "mysql2/promise";
 import { v4 as uuidv4 } from "uuid";
+
 //creates a new mysql connection
 let connection;
 try {
