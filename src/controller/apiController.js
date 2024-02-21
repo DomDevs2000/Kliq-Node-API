@@ -60,7 +60,7 @@ router.post("/users", validateCreateUser, async (req, res) => {
     } else {
       const user = req.body;
       await userService.createUser(user);
-      res.status(200).send("User Created");
+      res.status(200).json({ message: "User Created" });
     }
   } catch (error) {
     console.error(error);

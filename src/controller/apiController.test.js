@@ -31,7 +31,7 @@ vi.mock("../database/user.repository.js", async () => {
 
 describe("API Controller tests", () => {
   it("GET should return 200", async () => {
-    const res = await request(app).get("/users");
+    const res = await request(app).get("/api/users");
     expect(res.status).toBe(200);
   });
 
@@ -61,23 +61,36 @@ describe("API Controller tests", () => {
       application_id: "2000",
       first_name: "Jane",
       last_name: "Doe",
-      email: "Jo@Doe.org.uk",
+      email: "Joe@Doe.org.uk",
       password: "testpass",
-      phone_number: null,
+      phone_number: "07414114152",
       photo_url:
         "https://prod-img-cdn.remotecoach.fit/assets/86a13ad1-5404-43ed-b3cf-e35f9663c871/image_picker_E51BD2CE-EBE7-4E29-AF38-FCC808EF0E10-745-000000384888B683.png",
-      referral_url: null,
+      referral_url:
+        "https://prod-img-cdn.remotecoach.fit/assets/86a13ad1-5404-43ed-b3cf-e35f9663c871/image_picker_E51BD2CE-EBE7-4E29-AF38-FCC808EF0E10-745-000000384888B683.png",
     };
 
-    const res = await request(app).post("/users").send(newUser);
+    const res = await request(app).post("/api/users").send(newUser);
+
     expect(res.status).toBe(200);
+    expect(res.body).toEqual({ message: "User Created" });
   });
 
   it("PUT /users/:id should update a user by id", async () => {
-    const res = await request(app).put("/users/13").send({
+    const res = await request(app).put("/api/users/13").send({
+      application_id: 2024,
       first_name: "Jane",
+      last_name: "Doe",
+      email: "Jane@Doe.com",
+      password: "$2y$10$n329VK1Sry/OO.f.gc9WvvbwZ2IcOELjIkjfeKns2GREpAO",
+      phone_number: "07111111111",
+      photo_url:
+        "https://prod-img-cdn.remotecoach.fit/assets/86a13ad1-5404-43ed-b3cf-e35f9663c871/image_picker_E51BD2CE-EBE7-4E29-AF38-FCC808EF0E10-745-000000384888B683.png",
+      referral_url:
+        "https://prod-img-cdn.remotecoach.fit/assets/86a13ad1-5404-43ed-b3cf-e35f9663c871/image_picker_E51BD2CE-EBE7-4E29-AF38-FCC808EF0E10-745-000000384888B683.png",
     });
     expect(res.status).toBe(200);
+    expect(res.body).toEqual({ message: "User with id " + 13 + " updated" });
   });
 
   it("DELETE /users/:id should delete a user by id", async () => {
@@ -89,7 +102,7 @@ describe("API Controller tests", () => {
 });
 
 describe("create user validation request", () => {
-  it("should return 400 if user request with missing first name", async () => {
+  it("should return 400 if  create user request with missing first name", async () => {
     const user = {
       application_id: 0,
       // Missing first_name
