@@ -196,7 +196,6 @@ describe("last name query string validation test", () => {
   });
 });
 
-
 describe("Update user validation request", () => {
   it("should 400 error if bad update user request with missing first name", async () => {
     const user = {
