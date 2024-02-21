@@ -79,7 +79,7 @@ async function createUser(user) {
     const results = await connection.query(
       "INSERT INTO users (id, application_id,first_name, last_name, email, password, phone_number, photo_url, referral_url) VALUES (?,?, ?, ?, ? , ? ,? , ?, ?)",
       [
-        uuidv4(),
+        uuidv4(), // generates a unique id for the user - had issues using auto increment id in mysql db
         user.application_id,
         user.first_name,
         user.last_name,
