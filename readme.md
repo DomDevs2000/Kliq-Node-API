@@ -1,13 +1,13 @@
 # Running the application
 
-To run the application, run the bash script via /scripts/users.sh (note you may need to run 'chmod +x /scripts/setup.sh' to make it executable)
+To run the application, run the bash script via /scripts/users.sh (note you may need to run 'chmod +x /scripts/users.sh' to make it executable)
 this will run 3 commands:
 
-1. runs a sql creation script to create the user, database and table
-2. runs a mysql script to insert data from the csv file to the database
+1. runs a sql creation script to create the user, database and table (please note that the first password is your mysql root password)
+2. runs a mysql import command to insert data from the csv file to the database (please note this password is 'joinkliq')
 3. runs npm install to install all the required packages
 
-once the project is running, you can access the application via localhost:3000/api/users
+Once the project is running, you can access the application via localhost:3000/api/users
 
 # GET /api/users
 
@@ -24,15 +24,14 @@ to create a new user, a post request can be made to /api/users with a json body 
 for e.g:
 
 {
-
-        "application_id" : "2000",
-        "first_name": "John",
-        "last_name": "Doe",
-        "email": "John@Doe.org.uk",
-        "password": "testpass",
-        "phone_number": "07414114152",
-        "photo_url": "https://prod-cdn.remotecoach.fit/assets/86a13ad1-5404-43ed-b3cf-e35f9663c871/image_picker_E51BD2CE-EBE7-4E29-AF38-FCC808EF0E10-745-000000384888B683.png",
-        "referral_url": "https://prod-img-cdn.remotecoach.fit/assets/86a13ad1-5404-43ed-b3cf-e35f9663c871/image_picker_E51BD2CE-EBE7-4E29-AF38-FCC808EF0E10-745-000000384888B683.png"
+"application_id" : "2000",
+"first_name": "John",
+"last_name": "Doe",
+"email": "John@Doe.org.uk",
+"password": "testpass",
+"phone_number": "07414114152",
+"photo_url": "https://prod-cdn.remotecoach.fit/assets/86a13ad1-5404-43ed-b3cf-e35f9663c871/image_picker_E51BD2CE-EBE7-4E29-AF38-FCC808EF0E10-745-000000384888B683.png",
+"referral_url": "https://prod-img-cdn.remotecoach.fit/assets/86a13ad1-5404-43ed-b3cf-e35f9663c871/image_picker_E51BD2CE-EBE7-4E29-AF38-FCC808EF0E10-745-000000384888B683.png"
 
 }
 please note that there is validation on all fields, so leaving these empty will return an error stating which fields are missing
