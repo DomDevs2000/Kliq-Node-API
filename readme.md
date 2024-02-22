@@ -7,6 +7,8 @@ this will run 3 commands:
 2. runs a mysql import command to insert data from the csv file to the database (please note this password is 'joinkliq')
 3. runs npm install to install all the required packages
 
+Then run npm start to start the application
+
 Once the project is running, you can access the application via localhost:3000/api/users
 
 # GET /api/users
@@ -38,6 +40,7 @@ for e.g:
         "referral_url": "https://prod-img-cdn.remotecoach.fit/assets/86a13ad1-5404-43ed-b3cf-e35f9663c871/image_picker_E51BD2CE-EBE7-4E29-AF38-FCC808EF0E10-745-000000384888B683.png"
 
 }
+
 please note that there is validation on all fields, so leaving these empty will return an error stating which fields are missing
 additionally, there is password hasing to ensure security when sending a password to the database
 
